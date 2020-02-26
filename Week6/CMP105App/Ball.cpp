@@ -14,10 +14,10 @@ Ball::Ball()
 
 
 	
-	speed = 10;
-	accel = 1.1;
+	speed = 100.f;
+	accel = 100.f;
 	target = { 1200, 675 };
-	current_speed = 1;
+	
 }
 
 
@@ -31,16 +31,27 @@ Ball::~Ball()
 void Ball::update(float dt)
 {
 
+
 	sf::Vector2f direction = target - ball.getPosition();
 	direction = Vector::normalise(direction);
 
-	while (current_speed * dt <= speed)
-	{
-		velocity += (direction * accel) * dt;
 
-		current_speed = (current_speed + 1);
+	
+
+	if (Vector::magnitude(velocity) >= 100)
+	{ 
+		velocity = (direction * speed);
+	}
+	else
+	{
+		velocity += (direction * accel) *dt;
 	}
 	
-	ball.move(velocity *dt);
-	cout << current_speed *dt << endl;
+	
+	ball.move(velocity*dt);
+	
+	cout << Vector::magnitude(velocity) << endl;
+
+	mousepos = sf::Vector2f(input->getMouseX(), input->getMouseY());
+	target = mousepos;
 }

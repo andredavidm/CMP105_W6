@@ -21,7 +21,7 @@ public:
 
 
 	
-
+	sf::Vector2f mousepos;
 	float current_speed;
 	float speed;
 	float accel;
