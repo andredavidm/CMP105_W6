@@ -7,6 +7,7 @@ Level::Level(sf::RenderWindow* hwnd, Input* in)
 
 	// initialise game objects
 
+	myPlayer.setInput(input);
 }
 
 Level::~Level()
@@ -23,14 +24,16 @@ void Level::handleInput(float dt)
 // Update game objects
 void Level::update(float dt)
 {
-
+	myPlayer.update(dt);
+	myBall.update(dt);
 }
 
 // Render level
 void Level::render()
 {
 	beginDraw();
-
+	window->draw(myPlayer.player);
+	window->draw(myBall.ball);
 	endDraw();
 }
 

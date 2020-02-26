@@ -4,7 +4,8 @@
 #include "Framework/Input.h"
 #include <string.h>
 #include <iostream>
-
+#include "Player.h"
+#include "Ball.h"
 
 class Level{
 public:
@@ -14,6 +15,9 @@ public:
 	void handleInput(float dt);
 	void update(float dt);
 	void render();
+
+	Player myPlayer;
+	Ball myBall;
 
 private:
 	// Default functions for rendering to the screen.
